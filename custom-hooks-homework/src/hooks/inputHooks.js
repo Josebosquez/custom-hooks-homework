@@ -1,11 +1,21 @@
 import React, {useState} from 'react'
 
-function customHooksArrayFormat(initialState) {
-    return (
-        <div>
-            
-        </div>
-    )
+function CustomHooksArrayFormat(initialState) {
+    const [value, setValue] = useState(initialState)
+    
+    function onChange(e){
+        setValue(e.target.value)
+    }
+    
+    function clearInput(){
+        setValue('')
+    }
+
+    function showValue(){
+        console.log(value)
+    }
+
+    return [value, onChange, clearInput, showValue]
 }
 
-export default customHooksArrayFormat
+export default CustomHooksArrayFormat

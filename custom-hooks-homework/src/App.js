@@ -1,18 +1,46 @@
 import React from 'react'
-import customHooksArrayFormat from './hooks/inputHooks'
+import CustomHooksArrayFormat from './hooks/inputHooks'
 
 function App() {
+  const [email, 
+    emailOnChange, 
+    clearEmailInput, 
+    showEmailValue
+  ] = CustomHooksArrayFormat('')
+  const [username, 
+    usernameOnChange, 
+    clearUsernameInput, 
+    showUsernameValue
+  ] = CustomHooksArrayFormat('')
+  const [password, 
+    passwordOnChange, 
+    clearPasswordInput, 
+    showPasswordValue
+  ] = CustomHooksArrayFormat('')
+
+  function handleOnSubmit(e){
+    e.preventDefault();
+    
+    showEmailValue();
+    clearEmailInput();
+
+    showUsernameValue();
+    clearUsernameInput();
+
+    showPasswordValue();
+    clearPasswordInput();
+  }
 
   return (
     <div>
       <h1>App-1</h1>
       <form onSubmit={handleOnSubmit}>
-        <input type='text' placeholder='email'/>
+        <input type='email' placeholder='email' value={email} onChange={(e)=> emailOnChange(e)}/>
         <br/>
-        <input type='text' placeholder='Username'/>
-        <br/>
-        <input type='text' placeholder='Password'/>
-        <br/>
+        <input type='text' placeholder='Username' value={username} onChange={(e) => usernameOnChange(e)}/>
+        <br />
+        <input type='text' placeholder='Password' value={password} onChange={(e) => passwordOnChange(e)}/>
+        <br />
         <button type='submit'>Enter</button>
       </form>
     </div>
