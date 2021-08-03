@@ -20,12 +20,18 @@ function CustomHooksObjectFormat(initialState) {
 
 function App() {
   const { value: email, onChange: emailOnChange, clearInput: clearEmailInput, showValue: showEmailValue } = CustomHooksObjectFormat('');
+  const { value: username, onChange: usernameOnChange, clearInput: clearUsernameInput, showValue: showUsernameValue } = CustomHooksObjectFormat('');
+  const { value: password, onChange: passwordOnChange, clearInput: clearPasswordInput, showValue: showPasswordValue } = CustomHooksObjectFormat('');
 
   function handleOnSubmit(e) {
     e.preventDefault();
 
-    showEmailValue()
+    showEmailValue();
     clearEmailInput();
+    showUsernameValue();
+    clearUsernameInput();
+    showPasswordValue();
+    clearPasswordInput();
   }
 
   return (
@@ -34,11 +40,11 @@ function App() {
       <form onSubmit={handleOnSubmit}>
         <input type='email' value={email} placeholder='email' onChange={(e) => emailOnChange(e)} />
         <br />
-        {/* <input type='text' value = {username}placeholder='username' onChange={(e)=>usernameOnChange}/>
+        <input type='text' value = {username}placeholder='username' onChange={(e)=>usernameOnChange(e)}/>
         <br/>
 
-        <input type='text' value = {password}placeholder='password' onChange={(e)=>passwordOnChange}/> */}
-        {/* <br /> */}
+        <input type='text' value = {password}placeholder='password' onChange={(e)=>passwordOnChange(e)}/>
+        <br />
         <button type='submit'>Enter</button>
       </form>
     </div>
